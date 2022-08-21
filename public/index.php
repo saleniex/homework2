@@ -1,6 +1,6 @@
 <?php
 
-use App\EvenNumberEvaluator;
+use App\NumberEvaluator;
 use App\FileLogger;
 
 require_once '../vendor/autoload.php';
@@ -13,8 +13,7 @@ if ( ! isset($_GET['number'])) {
 
 $digit = $_GET['number'];
 
-$evenEvaluator = new EvenNumberEvaluator();
-$message = $evenEvaluator->evaluate($digit)
+$message = NumberEvaluator::isEven($digit)
     ? sprintf('%d is even', $digit)
     : sprintf('%d is odd', $digit);
 $logger->log($message, 'info');
