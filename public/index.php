@@ -1,19 +1,31 @@
 <?php
+declare(strict_types=1);
 
-use App\NumberEvaluator;
-use App\FileLogger;
+use App\Enums\NumberEvaluatorMethods;
+use App\Services\FileLogger;
+use App\Services\NumberEvaluatorService;
+use App\Exceptions\InvalidNumberEvaluatorMethodException;
+use App\Exceptions\InvalidNumberEvaluatorParameterException;
 
 require_once '../vendor/autoload.php';
 
 $logger = new FileLogger('../application.log');
-if ( ! isset($_GET['number'])) {
-    $logger->log('Number is not provided', 'error');
+
+try {
+    if (!isset($_GET['number']) || !is_numeric($_GET['number'])) {
+        throw new InvalidNumberEvaluatorParameterException();
+    }
+
+    if (!NumberEvaluatorMethods::tryFrom($_GET['method'])) {
+        throw new InvalidNumberEvaluatorMethodException();
+    }
+
+    $numberEvaluator = new NumberEvaluatorService((int)$_GET['number'], NumberEvaluatorMethods::from($_GET['method']));
+
+    $message = $numberEvaluator->evaluate();
+
+    $logger->log($message, 'info');
+} catch (\Throwable $e) {
+    $logger->log($e->getMessage(), 'error');
     exit(1);
 }
-
-$digit = $_GET['number'];
-
-$message = NumberEvaluator::isEven($digit)
-    ? sprintf('%d is even', $digit)
-    : sprintf('%d is odd', $digit);
-$logger->log($message, 'info');

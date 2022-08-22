@@ -1,6 +1,7 @@
 <?php
+declare(strict_types=1);
 
-namespace App;
+namespace App\Utils;
 
 use PHPUnit\Framework\TestCase;
 
@@ -44,5 +45,17 @@ class NumberEvaluatorTest extends TestCase
         $this->assertFalse(NumberEvaluator::isZero(-20));
         $this->assertFalse(NumberEvaluator::isZero(4));
         $this->assertFalse(NumberEvaluator::isZero(3));
+    }
+
+    public function testStringAsWrongArgumentType()
+    {
+        $this->expectException(\TypeError::class);
+        NumberEvaluator::isZero("0");
+    }
+
+    public function testFloatAsWrongArgumentType()
+    {
+        $this->expectException(\TypeError::class);
+        NumberEvaluator::isZero(0.0);
     }
 }

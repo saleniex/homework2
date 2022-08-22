@@ -1,6 +1,9 @@
 <?php
+declare(strict_types=1);
 
-namespace App;
+namespace App\Utils;
+
+use App\Interfaces\NumberEvaluatorInterface;
 
 /**
  * Evaluates whether digit is even or odd, positive or negative, or equal to zero
