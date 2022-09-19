@@ -1,6 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Loggers;
+
+use App\Loggers\LoggerInterface;
 
 class FileLogger implements LoggerInterface
 {

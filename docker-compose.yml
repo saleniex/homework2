@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  num-app:
+    container_name: num-app
+    build: .
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-8080}:80"
+    networks:
+      - num-app-network
+networks:
+  num-app-network:

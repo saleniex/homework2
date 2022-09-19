@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  num-app:
+    volumes:
+      - ./src:/var/www/html/src
+      - ./public:/var/www/html/public      
+      - ./tests:/var/www/html/tests
