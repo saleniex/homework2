@@ -15,6 +15,10 @@ If need other port, add before docker compose command env APP_PORT=****
 APP_PORT=8081 docker compose up 
 ```
 
+**NOTES**:
+1. Zero number evaluates as negative nummber
+
+
 **Your task is**:
 
 1. Add two new evaluation methods:

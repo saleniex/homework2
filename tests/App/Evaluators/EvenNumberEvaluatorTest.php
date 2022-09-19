@@ -4,6 +4,8 @@ namespace App;
 
 use PHPUnit\Framework\TestCase;
 
+use App\Evaluators\EvenNumberEvaluator;
+
 class EvenNumberEvaluatorTest extends TestCase
 {
     public function testEvaluate()
