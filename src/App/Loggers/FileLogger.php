@@ -2,6 +2,8 @@
 
 namespace App\Loggers;
 
+use App\Loggers\LoggerInterface;
+
 class FileLogger implements LoggerInterface
 {
     private string $fileName;
