@@ -3,6 +3,7 @@
 namespace App\Formaters\Factory;
 
 use App\Formaters\Factory\NumberFormaterFactoryInterface;
+use App\Formaters\NumberFormaterInterface;
 use App\Formaters\ZeroNumberFormater;
 use App\Formaters\EvenNumberFormater;
 use App\Formaters\PositiveNumberFormater;
@@ -29,9 +30,9 @@ class NumberFormaterFactory implements NumberFormaterFactoryInterface
         }   
     }
 
-    public function formater(string $method)
+    public function formater(string $method): ?NumberFormaterInterface
     {
-        return $this->getInstance( $method,
+        return $this->getNamedInstance( $method,
             function (string $name) {
 
                 return isset($this->formaters[$name]) ?  new $this->formaters[$name]() : null;

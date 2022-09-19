@@ -2,6 +2,7 @@
 
 namespace App\Evaluators\Factory;
 
+use App\Evaluators\NumberEvaluatorInterface;
 
 interface NumberEvaluatorFactoryInterface
 {
@@ -11,5 +12,5 @@ interface NumberEvaluatorFactoryInterface
      * @param string $method Evaluator method name
      * @return NumberEvaluatorInterface|null
      */
-    public function evaluator(string $method);
+    public function evaluator(string $method): ?NumberEvaluatorInterface;
 }

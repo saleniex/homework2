@@ -30,9 +30,9 @@ class NumberEvaluatorFactory implements NumberEvaluatorFactoryInterface
         }   
     }
 
-    public function evaluator(string $method)
+    public function evaluator(string $method): ?NumberEvaluatorInterface
     {
-        return $this->getInstance( $method,
+        return $this->getNamedInstance( $method,
             function (string $name) {
 
                 return isset($this->evaluators[$name]) ?  new $this->evaluators[$name]() : null;

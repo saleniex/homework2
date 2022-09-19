@@ -9,14 +9,15 @@ namespace App\Traits;
 trait NamedInstance
 {
 
+    //contains instances by name
     static $instances=[];
 
-    public function getInstance(string $name,Callable $createInstance)
+    public function getNamedInstance(string $name,Callable $createInstance)
     {
         if (!isset(static::$instances[$name])) {
             static::$instances[$name] = $createInstance($name);
         }
-        
+
         return static::$instances[$name]??null;
     }
 }
