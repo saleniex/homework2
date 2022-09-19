@@ -8,7 +8,7 @@ interface NumberEvaluatorInterface
      * Performs digit evaluation
      *
      * @param int $digit Digit to evaluate
-     * @return void
+     * @return bool
      */
     public function evaluate(int $digit): bool;
 }
