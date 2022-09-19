@@ -4,6 +4,17 @@ Homework
 This is simple web application for number evaluation. Current version accepts query parameter `number` and evaluates it 
 whether this number is even or odd. Evaluation result is logged.
 
+**RUN**:
+
+```
+docker compose up 
+```
+By default app use 8080 port.
+If need other port, add before docker compose command env APP_PORT=****
+```
+APP_PORT=8081 docker compose up 
+```
+
 **Your task is**:
 
 1. Add two new evaluation methods:
