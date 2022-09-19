@@ -6,10 +6,10 @@ namespace App\Traits;
 /**
  * returns existing instance by name or callback for a new instance
  */
-trait NamedInstance
+trait NamedInstances
 {
 
-    //contains instances by name
+    //stores instances by name
     static $instances=[];
 
     public function getNamedInstance(string $name,Callable $createInstance)

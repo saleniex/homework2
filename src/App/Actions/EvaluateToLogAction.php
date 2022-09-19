@@ -23,7 +23,7 @@ class EvaluateToLogAction
         $this->logger=$logger;        
     }
     
-    public function __invoke(int $digit)
+    public function __invoke(int $digit): void
     {
         $result =  $this->evaluator->evaluate($digit);
         $message = $this->formater->format($digit, $result);

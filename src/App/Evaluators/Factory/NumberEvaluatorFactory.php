@@ -7,7 +7,7 @@ use App\Evaluators\NumberEvaluatorInterface;
 use App\Evaluators\ZeroNumberEvaluator;
 use App\Evaluators\EvenNumberEvaluator;
 use App\Evaluators\PositiveNumberEvaluator;
-use App\Traits\NamedInstance;
+use App\Traits\NamedInstances;
 
 
 /**
@@ -15,7 +15,7 @@ use App\Traits\NamedInstance;
  */
 class NumberEvaluatorFactory implements NumberEvaluatorFactoryInterface
 {
-    use NamedInstance;
+    use NamedInstances;
 
     protected $evaluators = [
         'positive' => PositiveNumberEvaluator::class,

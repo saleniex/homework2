@@ -7,7 +7,7 @@ use App\Formaters\NumberFormaterInterface;
 use App\Formaters\ZeroNumberFormater;
 use App\Formaters\EvenNumberFormater;
 use App\Formaters\PositiveNumberFormater;
-use App\Traits\NamedInstance;
+use App\Traits\NamedInstances;
 
 
 /**
@@ -15,24 +15,25 @@ use App\Traits\NamedInstance;
  */
 class NumberFormaterFactory implements NumberFormaterFactoryInterface
 {
-    use NamedInstance;
+    use NamedInstances;
 
     protected $formaters = [
         'positive' => PositiveNumberFormater::class,
-        'even' => EvenNumberFormater::class,            
-        'zero'=> ZeroNumberFormater::class,            
+        'even' => EvenNumberFormater::class,
+        'zero' => ZeroNumberFormater::class,
     ];
 
-    public  function __construct(array $evaluators=null)
+    public  function __construct(array $evaluators = null)
     {
         if (isset($formaters)) {
             $this->evaluators =  $evaluators;
-        }   
+        }
     }
 
     public function formater(string $method): ?NumberFormaterInterface
     {
-        return $this->getNamedInstance( $method,
+        return $this->getNamedInstance(
+            $method,
             function (string $name) {
 
                 return isset($this->formaters[$name]) ?  new $this->formaters[$name]() : null;
