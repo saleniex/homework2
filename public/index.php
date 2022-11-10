@@ -16,6 +16,6 @@ $evaluationType = $_GET['evaluationType'];
 
 $evenEvaluator = new NumberEvaluator();
 $message = $evenEvaluator->evaluate($digit, $evaluationType)
-    ? sprintf('%d is even', $digit)
-    : sprintf('%d is odd', $digit);
+    ? sprintf('%d is valid', $digit)
+    : sprintf('%d is invalid', $digit);
 $logger->log($message, 'info');
