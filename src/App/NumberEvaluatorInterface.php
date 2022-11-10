@@ -7,8 +7,10 @@ interface NumberEvaluatorInterface
     /**
      * Performs digit evaluation
      *
-     * @param int $digit Digit to evaluate
-     * @return void
+     * @param int $digit
+     * @param int $evaluationType
+     *
+     * @return bool
      */
-    public function evaluate(int $digit): bool;
+    public function evaluate(int $digit, int $evaluationType): bool;
 }
