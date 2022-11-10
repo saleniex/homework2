@@ -1,6 +1,6 @@
 <?php
 
-use App\EvenNumberEvaluator;
+use App\Evaluators\EvaluatorFactory;
 use App\FileLogger;
 
 require_once '../vendor/autoload.php';
@@ -11,10 +11,5 @@ if ( ! isset($_GET['number'])) {
     exit(1);
 }
 
-$digit = $_GET['number'];
-
-$evenEvaluator = new EvenNumberEvaluator();
-$message = $evenEvaluator->evaluate($digit)
-    ? sprintf('%d is even', $digit)
-    : sprintf('%d is odd', $digit);
-$logger->log($message, 'info');
+$evaluator = new EvaluatorFactory($_GET['param'], $_GET['number']);
+$logger->log($evaluator->evaluateNumber(), 'info');
