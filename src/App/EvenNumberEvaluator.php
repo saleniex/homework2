@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Interfaces\NumberEvaluatorInterface;
+
 /**
  * Evaluates whether digit is even or odd
  */
