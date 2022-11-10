@@ -1,0 +1,16 @@
+version: '1'
+services:
+  homework2:
+    build: .
+    container_name: homework2
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    networks:
+      - homework2-network
+    ports:
+      - 8000:8000
+
+networks:
+  homework2-network:
+    driver: bridge
