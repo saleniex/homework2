@@ -1,20 +1,19 @@
 <?php
 
+use App\EvaluatorController;
 use App\EvenNumberEvaluator;
 use App\FileLogger;
 
 require_once '../vendor/autoload.php';
 
 $logger = new FileLogger('../application.log');
-if ( ! isset($_GET['number'])) {
+if (!isset($_GET['number'])) {
     $logger->log('Number is not provided', 'error');
     exit(1);
 }
-
+$method = $_GET['method_name'];
 $digit = $_GET['number'];
 
-$evenEvaluator = new EvenNumberEvaluator();
-$message = $evenEvaluator->evaluate($digit)
-    ? sprintf('%d is even', $digit)
-    : sprintf('%d is odd', $digit);
+$evaluator = new EvaluatorController($digit, $method);
+$message = $evaluator->completeEvaluation();
 $logger->log($message, 'info');
